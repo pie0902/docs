@@ -4,7 +4,7 @@ title: 아키텍처
 # 아키텍처 소개
 
 ## ECS 배포
-<img src="/docs/img/project1/architecture-msa.png" alt="MSA Architecture" style="width: 80%; max-width: 900px;" />
+<img src="/docs/img/project1/architecture-msa.png" alt="MSA Architecture" />
 
 ### 도입 이유
     - 기존의 단일 서비스 아키텍처는 모든 기능이 하나의 애플리케이션에 통합되어 있어 확장성과 유지보수가 어려웠습니다.
@@ -33,7 +33,7 @@ title: 아키텍처
 ---
 
 ## EC2 배포
-<img src="/docs/img/project1/architecture-ec2.png" alt="EC2 Architecture" style="width: 80%; max-width: 900px;" />
+<img src="/docs/img/project1/architecture-ec2.png" alt="EC2 Architecture" />
 
 ### 보완 설명
     - EC2 내부에 Front, User, Product, Order, Review 총 5개의 컨테이너를 직접 띄워 단일 서버에서 운영하는 구조입니다.

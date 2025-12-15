@@ -40,7 +40,7 @@ title : 기술적 의사결정
     2.  데이터베이스 쿼리 횟수 감소로 인한 서버 부하 감소
     3.  사용자 경험 개선 및 웹 애플리케이션의 전반적인 성능 향상
     - 도입 효과
-<img src="/docs/img/project1/redis_res.png" alt="redis" style="width: 80%; max-width: 900px;" />
+<img src="/docs/img/project1/redis_res.png" alt="redis" />
 
 
 

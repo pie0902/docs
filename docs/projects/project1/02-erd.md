@@ -6,7 +6,7 @@ title: ERD
 
 아래는 프로젝트에서 사용한 실제 엔티티 기반의 ERD입니다.
 
-<img src="/docs/img/project1/erd.png" alt="ERD" style="width: 90%; max-width: 1000px;" />
+<img src="/docs/img/project1/erd.png" alt="ERD" />
 
 ---
 

@@ -42,7 +42,7 @@ title : 트러블 슈팅
     - 프론트엔드와 서버 사이에 API 엔드포인트를 관리하는 API GATEWAY를 생성 해당 GATEWAY에서 JWT 관련 검증을 이루고 각 서버에는 유저 정보만 넘겨주게됨.
 
 ## SWAP 메모리
-<img src="/docs/img/project1/swap_memory.png" alt="MSA Architecture" style="width: 80%; max-width: 900px;" />
+<img src="/docs/img/project1/swap_memory.png" alt="MSA Architecture" />
 
 - 문제 상황
     - EC2 프리티어를 사용 중 MSA 서버 5개를 docker-compose를 이용하니 cpu 및 메모리 문제로 서버가 다운되었다.

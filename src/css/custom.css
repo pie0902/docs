@@ -28,3 +28,11 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* 문서 내 정적 이미지 공통 스타일 */
+.markdown img[src^="/docs/img/"] {
+  width: 100%;
+  max-width: 900px;
+  display: block;
+  margin: 1.5rem auto;
+}
