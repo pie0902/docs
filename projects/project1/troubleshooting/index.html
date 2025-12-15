@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-projects/project1/troubleshooting" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">트러블 슈팅 | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://pie0902.github.io/docs/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://pie0902.github.io/docs/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://pie0902.github.io/docs/projects/project1/troubleshooting"><meta data-rh="true" property="og:locale" content="ko"><meta data-rh="true" name="docusaurus_locale" content="ko"><meta data-rh="true" name="docsearch:language" content="ko"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="트러블 슈팅 | My Site"><meta data-rh="true" name="description" content="동시성 제어"><meta data-rh="true" property="og:description" content="동시성 제어"><link data-rh="true" rel="icon" href="/docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://pie0902.github.io/docs/projects/project1/troubleshooting"><link data-rh="true" rel="alternate" href="https://pie0902.github.io/docs/projects/project1/troubleshooting" hreflang="ko"><link data-rh="true" rel="alternate" href="https://pie0902.github.io/docs/projects/project1/troubleshooting" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"트러블 슈팅","item":"https://pie0902.github.io/docs/projects/project1/troubleshooting"}]}</script><link rel="stylesheet" href="/docs/assets/css/styles.4b065cb5.css">
+<script src="/docs/assets/js/runtime~main.33f384cf.js" defer="defer"></script>
+<script src="/docs/assets/js/main.85bac2b2.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/docs/img/logo.svg"><link rel="preload" as="image" href="/img/project1/swap_memory.png"><div role="region" aria-label="본문으로 건너뛰기"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">본문으로 건너뛰기</a></div><nav aria-label="메인" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="사이드바 펼치거나 접기" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/docs/"><div class="navbar__logo"><img src="/docs/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/">Docs</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/pie0902" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="어두운 모드와 밝은 모드 전환하기 (현재 system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="맨 위로 스크롤하기" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="문서 사이드바" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/"><span title="About" class="linkLabel_WmDU">About</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--active"><span title="Projects" class="categoryLinkLabel_W154">Projects</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/projects/project1/overview"><span title="E-commerce" class="categoryLinkLabel_W154">E-commerce</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/projects/project1/overview"><span title="프로젝트 소개" class="linkLabel_WmDU">프로젝트 소개</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/projects/project1/erd"><span title="ERD" class="linkLabel_WmDU">ERD</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/projects/project1/architecture"><span title="아키텍처" class="linkLabel_WmDU">아키텍처</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/projects/project1/cicd"><span title="CI/CD" class="linkLabel_WmDU">CI/CD</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/projects/project1/decisions"><span title="기술적 의사결정" class="linkLabel_WmDU">기술적 의사결정</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/projects/project1/troubleshooting"><span title="트러블 슈팅" class="linkLabel_WmDU">트러블 슈팅</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/projects/project1/project_clear"><span title="프로젝트 총정리" class="linkLabel_WmDU">프로젝트 총정리</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/projects/project1/update"><span title="--2025 배포 업데이트--" class="linkLabel_WmDU">--2025 배포 업데이트--</span></a></li></ul></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="탐색 경로"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="홈" class="breadcrumbs__link" href="/docs/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Projects</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">E-commerce</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">트러블 슈팅</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">이 페이지에서</button></div><div class="theme-doc-markdown markdown"><header><h1>트러블 슈팅</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="동시성-제어">동시성 제어<a href="#동시성-제어" class="hash-link" aria-label="동시성 제어에 대한 직접 링크" title="동시성 제어에 대한 직접 링크" translate="no">​</a></h2>
+<ul>
+<li class="">1차 트러블 슈팅<!-- -->
+<ul>
+<li class="">1차 문제 상황 (<strong>락을 걸어도 결제 이후 수량 업데이트 문제 )</strong>
+<ul>
+<li class="">주문 처리 중에 락을 걸었지만, 결제가 완료된 이후에 상품 수량이 업데이트되어 수량이 1개인 상품이라도 주문서가 여러 개 생성될 수 있습니다.</li>
+<li class="">락을 걸어놨지만 결제가 완료된 시점에서 수량이 업데이트 되기 때문에 수량이 1개라고 해도 주문서가 100개가 생길 수가 있다.</li>
+<li class="">a와 b의 주문서가 생기고 a와 b 둘 다 결제창에 진입한다. 둘 다 결제가 진행 된 후에 수량이 1개만 줄어들 위험이 있다.</li>
+<li class="">지금은 결제 모듈로 카카오 API를 사용하고 있는데 다른 결제 모듈들을 가지고 왔을때 그 모듈들에도 락을 걸어줘야 한다.</li>
+</ul>
+</li>
+<li class="">1차 해결 방안<!-- -->
+<ul>
+<li class="">분산 락을 적용할 정확한 시점을 고민해보고 주문하기에 락을 걸어서 동시성을 제어 했다.</li>
+</ul>
+</li>
+<li class="">1차 해결 방안 효과<!-- -->
+<ul>
+<li class="">주문하기 자체에 락을 걸어서 재고가 1일 때 A,B가 동시에 주문해도 한 명만 결제가 될 수 있도록 개선했다.</li>
+<li class="">100명 1000명이 시도해도 재고가 10개면 10개만 받고 깔끔하게 10명만 결제하기로 넘어갈 수 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="">2차 트러블 슈팅<!-- -->
+<ul>
+<li class="">2차 문제 상황<!-- -->
+<ul>
+<li class="">개선된 코드에서 발생한 문제</li>
+<li class="">수량이 100개인 상품을 어떤 유저 한명이 100개를 주문해놓고 결제를 안하면 다른사람이 결제를 할 수가 없다. ex) 주문량 빌런</li>
+</ul>
+</li>
+<li class="">2차 해결 방안<!-- -->
+<ul>
+<li class="">스케줄링을 통한 문제 해결</li>
+<li class="">주문하기 버튼을 클릭하면 &quot;5분 이내에 결제가 완료되지 않으면 주문이 자동으로 취소됩니다.&quot;라는 팝업 메시지를 표시한다. 이와 함께 스케줄링 기능을 도입하여, 주문 후 5분 이내에 결제가 이루어지지 않은 경우 해당 주문을 자동으로 취소 처리하고 주문된 수량만큼 재고를 복원한다.</li>
+</ul>
+</li>
+<li class="">2차 해결 방안 효과<!-- -->
+<ul>
+<li class="">미결제 주문으로 인한 재고 낭비와 판매 기회 손실을 최소화할 수 있게 되었다.</li>
+<li class="">사용자 경험 측면에서도 결제 완료에 대한 적절한 안내를 제공하고, 보다 효율적인 주문 처리 흐름을 제공할 수 있게 되었다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class=""><strong>상세 내용:</strong>
+<ul>
+<li class="">Redis를 사용한 동시성 제어 <a href="https://github.com/pie0902/TIL/blob/main/Spring/SpringBootPractices/redis-lock/1.Redis%EB%A5%BC_%EC%82%AC%EC%9A%A9%ED%95%9C_%EB%8F%99%EC%8B%9C%EC%84%B1_%EC%A0%9C%EC%96%B4.md" target="_blank" rel="noopener noreferrer" class="">바로가기</a></li>
+<li class="">동시성 제어에서 겪은 문제 해결 과정 <a href="https://github.com/pie0902/TIL/blob/main/Spring/SpringBootPractices/redis-lock/2.%EB%8F%99%EC%8B%9C%EC%84%B1_%EC%A0%9C%EC%96%B4%EC%97%90%EC%84%9C_%EA%B2%AA%EC%9D%80_%EB%AC%B8%EC%A0%9C_%ED%95%B4%EA%B2%B0_%EA%B3%BC%EC%A0%95.md" target="_blank" rel="noopener noreferrer" class="">바로가기</a></li>
+<li class="">동시성 문제 해결을 위한 재고 관리 전략 수정 <a href="https://github.com/pie0902/TIL/blob/main/Spring/SpringBootPractices/redis-lock/4.%EB%8F%99%EC%8B%9C%EC%84%B1_%EB%AC%B8%EC%A0%9C_%ED%95%B4%EA%B2%B0%EC%9D%84_%EC%9C%84%ED%95%9C_%EC%9E%AC%EA%B3%A0_%EA%B4%80%EB%A6%AC_%EC%A0%84%EB%9E%B5_%EC%88%98%EC%A0%95.md" target="_blank" rel="noopener noreferrer" class="">바로가기</a></li>
+<li class="">동시성 제어와 스케줄링을 통한 효과적인 주문 및 재고 관리 전략<a href="https://github.com/pie0902/TIL/blob/main/Spring/SpringBootPractices/redis-lock/5.%EB%8F%99%EC%8B%9C%EC%84%B1_%EC%A0%9C%EC%96%B4%EC%99%80_%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81%EC%9D%84_%ED%86%B5%ED%95%9C_%ED%9A%A8%EA%B3%BC%EC%A0%81%EC%9D%B8_%EC%A3%BC%EB%AC%B8_%EB%B0%8F_%EC%9E%AC%EA%B3%A0_%EA%B4%80%EB%A6%AC_%EC%A0%84%EB%9E%B5.md" target="_blank" rel="noopener noreferrer" class="">바로가기</a></li>
+<li class="">동시성 제어에서 주문 취소 통보: Amazon SES를 활용한 메일 전송 전략<a href="https://github.com/pie0902/TIL/blob/main/Spring/SpringBootPractices/redis-lock/6%20%EB%8F%99%EC%8B%9C%EC%84%B1_%EC%A0%9C%EC%96%B4%EC%97%90%EC%84%9C_%EC%A3%BC%EB%AC%B8_%EC%B7%A8%EC%86%8C_%ED%86%B5%EB%B3%B4%3AAmazon_SES%EB%A5%BC_%ED%99%9C%EC%9A%A9%ED%95%9C_%EB%A9%94%EC%9D%BC_%EC%A0%84%EC%86%A1_%EC%A0%84%EB%9E%B5.md" target="_blank" rel="noopener noreferrer" class="">바로가기</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="api-gatewat">API GATEWAT<a href="#api-gatewat" class="hash-link" aria-label="API GATEWAT에 대한 직접 링크" title="API GATEWAT에 대한 직접 링크" translate="no">​</a></h2>
+<ul>
+<li class="">문제 상황<!-- -->
+<ul>
+<li class="">프론트엔드에서 여러 서버에 날리는 각각의 fetch를 관리하기 힘들고 JWT 토큰 관리 코드를 각 서버마다 가지고 있는 점에서 성능 이슈를 느낌</li>
+</ul>
+</li>
+<li class="">해결 방안<!-- -->
+<ul>
+<li class="">프론트엔드와 서버 사이에 API 엔드포인트를 관리하는 API GATEWAY를 생성 해당 GATEWAY에서 JWT 관련 검증을 이루고 각 서버에는 유저 정보만 넘겨주게됨.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="swap-메모리">SWAP 메모리<a href="#swap-메모리" class="hash-link" aria-label="SWAP 메모리에 대한 직접 링크" title="SWAP 메모리에 대한 직접 링크" translate="no">​</a></h2>
+<img src="/img/project1/swap_memory.png" alt="MSA Architecture" style="width:80%;max-width:900px">
+<ul>
+<li class="">문제 상황<!-- -->
+<ul>
+<li class="">EC2 프리티어를 사용 중 MSA 서버 5개를 docker-compose를 이용하니 cpu 및 메모리 문제로 서버가 다운되었다.</li>
+</ul>
+</li>
+<li class="">1차 해결 방안<!-- -->
+<ul>
+<li class="">(프리티어 t2.micro 메모리 1기가) 인스턴스를 재시작하여 확인해보았지만 저장소 문제로 파일수정등에 문제가 생겨 저장소(볼륨)을 8GiB에서 프리티어 상한선 30GiB로 설정하여 여유 공간을 확보하고 CPU메모리의 문제를 해결</li>
+</ul>
+</li>
+<li class="">2차 해결 방안 (1차 해결 이후 같은 현상 발생)<!-- -->
+<ul>
+<li class="">스왑 메모리를 사용하여 4기가정도를 스왑메모리로 설정해주었다. 다행이 인스턴스의 사양을 높이지 않고 해결을 할 수 있었습니다. 하지만 스왑 메모리의 단점들이 존재 하기 떄문에 지속적으로 확인하여 성능에 영향이 간다고 판단되면 인스턴스의 사양을 높이기로 하였다</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="쿼리-개선">쿼리 개선<a href="#쿼리-개선" class="hash-link" aria-label="쿼리 개선에 대한 직접 링크" title="쿼리 개선에 대한 직접 링크" translate="no">​</a></h2>
+<ul>
+<li class="">문제 상황<!-- -->
+<ul>
+<li class="">MSA 사이에서 Feign 통신 혹은 DB에 접근하는 쿼리가 N+1 문제가 발생하여 잦은 통신과 많은 쿼리가 생성되는 문제가 발생했다.</li>
+</ul>
+</li>
+<li class="">해결 방안<!-- -->
+<ul>
+<li class="">쿼리나 Feign 수를 줄이기 위한 join을 활용한 쿼리 최적화를 통해 해결했습니다. 이를 통해 쿼리의 수를 줄이고 Feign통신 횟수도 감소하였습니다.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class=""><strong>배치 조회 전략 ver</strong>
+<ul>
+<li class="">배치 조회 전략 을 사용한 쿼리 개선과정 <a href="https://github.com/pie0902/TIL/blob/main/Spring/SpringBootPractices/MSA%ED%99%98%EA%B2%9D%EC%97%90%EC%84%9C_%EB%B0%B0%EC%B9%98_%EC%A1%B0%ED%9A%8C_%EC%A0%84%EB%9E%B5%EC%9D%84_%ED%86%B5%ED%95%9C_%EC%BF%BC%EB%A6%AC_%EA%B0%9C%EC%84%AC.md" target="_blank" rel="noopener noreferrer" class="">바로가기</a></li>
+</ul>
+</li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="문서 페이지"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/projects/project1/decisions"><div class="pagination-nav__sublabel">이전</div><div class="pagination-nav__label">기술적 의사결정</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/projects/project1/project_clear"><div class="pagination-nav__sublabel">다음</div><div class="pagination-nav__label">프로젝트 총정리</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#동시성-제어" class="table-of-contents__link toc-highlight">동시성 제어</a></li><li><a href="#api-gatewat" class="table-of-contents__link toc-highlight">API GATEWAT</a></li><li><a href="#swap-메모리" class="table-of-contents__link toc-highlight">SWAP 메모리</a></li><li><a href="#쿼리-개선" class="table-of-contents__link toc-highlight">쿼리 개선</a></li></ul></div></div></div></div></main></div></div></div></div>
+</body>
+</html>
