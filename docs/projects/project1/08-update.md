@@ -25,10 +25,10 @@ title: --2025 배포 업데이트--
 - 배포 방식: SSH 원격 접속을 통한 컨테이너 오케스트레이션 및 관리
 
 ## 유저 트래픽 아키텍처
-<img src="/img/project1/user.png" alt="MSA Architecture" style={{ width: "100%", maxWidth: "900px" }} />
+<img src="/docs/img/project1/user.png" alt="MSA Architecture" style="width: 100%; max-width: 900px;" />
 
 ## 운영 아키텍처 다이어그램
-<img src="/img/project1/ops.png" alt="MSA Architecture" style={{ width: "100%", maxWidth: "900px" }} />
+<img src="/docs/img/project1/ops.png" alt="MSA Architecture" style="width: 100%; max-width: 900px;" />
 
 ### 변경점
   - Route 53 → Cloudflare DNS/Proxy(+ cloudflared 터널)

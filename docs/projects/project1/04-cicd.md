@@ -21,7 +21,7 @@ title: CI/CD
 ---
 
 # CI/CD (ECS)
-<img src="/img/project1/cicd_ecs.png" alt="CICD_ECS" style={{ width: '80%', maxWidth: '900px' }} />
+<img src="/docs/img/project1/cicd_ecs.png" alt="CICD_ECS" style="width: 80%; max-width: 900px;" />
 
 # CI/CD (EC2)
-<img src="/img/project1/cicd_ec2.png" alt="CICD_EC2" style={{ width: '80%', maxWidth: '900px' }} />
+<img src="/docs/img/project1/cicd_ec2.png" alt="CICD_EC2" style="width: 80%; max-width: 900px;" />
