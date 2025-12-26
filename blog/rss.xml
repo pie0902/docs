@@ -29,11 +29,10 @@
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-다음-예고-네티netty와-이벤트-기반-모델">5. 다음 예고: 네티(Netty)와 이벤트 기반 모델<a href="https://pie0902.github.io/docs/blog/understanding-tomcat-core#5-%EB%8B%A4%EC%9D%8C-%EC%98%88%EA%B3%A0-%EB%84%A4%ED%8B%B0netty%EC%99%80-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EB%AA%A8%EB%8D%B8" class="hash-link" aria-label="5. 다음 예고: 네티(Netty)와 이벤트 기반 모델에 대한 직접 링크" title="5. 다음 예고: 네티(Netty)와 이벤트 기반 모델에 대한 직접 링크" translate="no">​</a></h2>
 <p>이러한 '대기(Blocking)' 문제를 해결하기 위해 등장한 것이 바로 이벤트 기반(Event-driven) 통신이다. 다음 글에서는 단 몇 개의 스레드만으로 수만 명의 요청을 쳐내는 **네티(Netty)**의 원리를 파헤쳐보겠다.</p>
 <h2>???</h2>
-<blockquote>
-<p>Q. 그럼 왜 모든 곳에서 네티를 쓰지 않고 톰캣을 기본으로 사용할까?</p>
-</blockquote>
-<blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="그럼-왜-모든-곳에서-네티를-쓰지-않고-톰캣을-기본으로-사용할까">그럼 왜 모든 곳에서 네티를 쓰지 않고 톰캣을 기본으로 사용할까?<a href="https://pie0902.github.io/docs/blog/understanding-tomcat-core#%EA%B7%B8%EB%9F%BC-%EC%99%9C-%EB%AA%A8%EB%93%A0-%EA%B3%B3%EC%97%90%EC%84%9C-%EB%84%A4%ED%8B%B0%EB%A5%BC-%EC%93%B0%EC%A7%80-%EC%95%8A%EA%B3%A0-%ED%86%B0%EC%BA%A3%EC%9D%84-%EA%B8%B0%EB%B3%B8%EC%9C%BC%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%A0%EA%B9%8C" class="hash-link" aria-label="그럼 왜 모든 곳에서 네티를 쓰지 않고 톰캣을 기본으로 사용할까?에 대한 직접 링크" title="그럼 왜 모든 곳에서 네티를 쓰지 않고 톰캣을 기본으로 사용할까?에 대한 직접 링크" translate="no">​</a></h3>
 <p>톰캣은 자바 웹 표준(Servlet)을 완벽하게 구현한 '풀 패키지' 서버로, 개발자가 로직에만 집중할 수 있는 생산성을 제공한다. 반면 네티는 성능은 극강이지만 비동기 설계의 복잡도와 디버깅의 어려움이 커서, 초고성능이 필요한 특수 케이스가 아니라면 안정성과 생산성 측면에서 톰캣이 훨씬 유리하기 때문이다.</p>
+<blockquote>
+<p>"이 글은 톰캣의 기본 원리인 BIO를 다룹니다. 최신 톰캣은 NIO를 지원하여 스레드 효율을 높였지만, 서블릿 표준의 한계로 인해 여전히 로직 처리 시 스레드 점유 문제가 존재한다고 합니다.."</p>
 </blockquote>]]></content:encoded>
             <category>Java</category>
             <category>Network</category>
