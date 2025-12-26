@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkmy_portfolio=globalThis.webpackChunkmy_portfolio||[]).push([[472],{5513:e=>{e.exports=JSON.parse('{"title":"All posts","items":[{"title":"ServerSocket\uc73c\ub85c \uc774\ud574\ud558\ub294 1\uc694\uccad 1\uc2a4\ub808\ub4dc","permalink":"/docs/blog/understanding-tomcat-core","unlisted":false,"date":"2025-12-26T09:47:11.000Z"}]}')}}]);
