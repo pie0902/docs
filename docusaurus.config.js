@@ -49,7 +49,14 @@ const config = {
           sidebarPath: './sidebars.js',
           routeBasePath: '/',
         },
-        blog: false,
+        blog: {
+          showReadingTime: true,
+          routeBasePath: 'blog',
+          blogTitle: 'Blog',
+          blogDescription: '글과 기록을 모아둔 공간',
+          blogSidebarCount: 'ALL',
+          blogSidebarTitle: 'All posts',
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -76,6 +83,11 @@ const config = {
             sidebarId: 'tutorialSidebar',
             position: 'left',
             label: 'Docs',
+          },
+          {
+            to: '/blog',
+            label: 'Blog',
+            position: 'left',
           },
           {
             href: 'https://github.com/pie0902',
