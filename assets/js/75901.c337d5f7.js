@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkmy_portfolio=globalThis.webpackChunkmy_portfolio||[]).push([[75901],{75901:(e,o,a)=>{a.d(o,{createTreemapServices:()=>r.d});var r=a(51633);a(87960)}}]);

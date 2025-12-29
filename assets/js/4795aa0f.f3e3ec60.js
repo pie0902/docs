@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkmy_portfolio=globalThis.webpackChunkmy_portfolio||[]).push([[978],{3937:t=>{t.exports=JSON.parse('{"authors":[{"name":"\uc724\uc885\uc77c","title":"\uac1c\ubc1c\uc790","url":"https://github.com/pie0902","page":{"permalink":"/docs/blog/authors/thunder"},"socials":{"github":"https://github.com/pie0902"},"key":"thunder","count":1}]}')}}]);

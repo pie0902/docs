@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ko" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">10.Java 추상화 | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://pie0902.github.io/docs/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://pie0902.github.io/docs/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://pie0902.github.io/docs/blog/dev/java/10-java-추상화"><meta data-rh="true" property="og:locale" content="ko"><meta data-rh="true" name="docusaurus_locale" content="ko"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="ko"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="10.Java 추상화 | My Site"><meta data-rh="true" name="description" content="추상화란?"><meta data-rh="true" property="og:description" content="추상화란?"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2023-12-29T00:00:00.000Z"><meta data-rh="true" property="article:author" content="https://github.com/pie0902"><meta data-rh="true" property="article:tag" content="Dev,Java/SpringBoot,Java,Testing"><link data-rh="true" rel="icon" href="/docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://pie0902.github.io/docs/blog/dev/java/10-java-추상화"><link data-rh="true" rel="alternate" href="https://pie0902.github.io/docs/blog/dev/java/10-java-추상화" hreflang="ko"><link data-rh="true" rel="alternate" href="https://pie0902.github.io/docs/blog/dev/java/10-java-추상화" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://pie0902.github.io/docs/blog/dev/java/10-java-추상화","mainEntityOfPage":"https://pie0902.github.io/docs/blog/dev/java/10-java-추상화","url":"https://pie0902.github.io/docs/blog/dev/java/10-java-추상화","headline":"10.Java 추상화","name":"10.Java 추상화","description":"추상화란?","datePublished":"2023-12-29T00:00:00.000Z","author":{"@type":"Person","name":"thunder","description":"개발자","url":"https://github.com/pie0902"},"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://pie0902.github.io/docs/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/docs/blog/rss.xml" title="My Site RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/docs/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/docs/assets/css/styles.45b1dd04.css">
+<script src="/docs/assets/js/runtime~main.f706ba66.js" defer="defer"></script>
+<script src="/docs/assets/js/main.0165b0e3.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/docs/img/logo.svg"><div role="region" aria-label="본문으로 건너뛰기"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">본문으로 건너뛰기</a></div><nav aria-label="메인" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="사이드바 펼치거나 접기" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/docs/"><div class="navbar__logo"><img src="/docs/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div></a><a class="navbar__item navbar__link" href="/docs/">Docs</a><a class="navbar__item navbar__link" href="/docs/blog/categories">Blog</a><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">Categories</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/blog/tags/til">TIL</a></li><li><a class="dropdown__link" href="/docs/blog/tags/dev">Dev</a></li><li><a class="dropdown__link" href="/docs/blog/tags/dev/java-springboot">Java/SpringBoot</a></li><li><a class="dropdown__link" href="/docs/blog/tags/cs">CS</a></li><li><a class="dropdown__link" href="/docs/blog/tags/project">Project</a></li><li><a class="dropdown__link" href="/docs/blog/tags/infra">Infra</a></li><li><a class="dropdown__link" href="/docs/blog/tags/embedded">Embedded</a></li><li><a class="dropdown__link" href="/docs/blog/tags/writing">Writing</a></li></ul></div></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/pie0902" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="어두운 모드와 밝은 모드 전환하기 (현재 system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><main class="col col--9 col--offset-1"><article class=""><header><h1 class="title_xvU1 postTitle_nF1Z">10.Java 추상화</h1><div class="container_mt6G margin-vert--md"><time datetime="2023-12-29T00:00:00.000Z">2023년 12월 29일</time> · <!-- -->약 5분</div><div class="margin-top--md margin-bottom--sm row"><div class="col col--12 authorCol_Hf19"><div class="avatar margin-bottom--sm"><div class="avatar__intro authorDetails_lV9A"><div class="avatar__name"><a href="/docs/blog/authors/thunder"><span class="authorName_yefp" translate="no">thunder</span></a></div><small class="authorTitle_nd0D" title="개발자">개발자</small><div class="authorSocials_rSDt"><a href="https://github.com/pie0902" target="_blank" rel="noopener noreferrer" class="authorSocialLink_owbf" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 250" preserveAspectRatio="xMidYMid" style="--dark:#000;--light:#fff" class="authorSocialIcon_XYv3 githubSvg_Uu4N"><path d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0Zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931Zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66Zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08Zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27Zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622Zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868Zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403Z"></path></svg></a></div></div></div></div></div></header><div id="__blog-post-container" class="markdown"><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="추상화란"><strong>추상화란?</strong><a href="#추상화란" class="hash-link" aria-label="추상화란에 대한 직접 링크" title="추상화란에 대한 직접 링크" translate="no">​</a></h3>
+<hr>
+<ul>
+<li class="">
+<p>복잡한 것들을 일반적인 형태로 단순화합니다.</p>
+</li>
+<li class="">
+<p>코드의 재사용성이 증가합니다.</p>
+</li>
+</ul>
+<hr>
+<h2><strong>🤔</strong></h2>
+<p>요약을 해도 저는 잘 이해가 안 가서요.. 제가 이것저것 찾아본 자료를 한번<br>
+<!-- -->정리를 해보겠습니다.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="평소에-자주-쓰는-반복문도-추상화다"><strong>평소에 자주 쓰는 반복문도 추상화다!?</strong><a href="#평소에-자주-쓰는-반복문도-추상화다" class="hash-link" aria-label="평소에-자주-쓰는-반복문도-추상화다에 대한 직접 링크" title="평소에-자주-쓰는-반복문도-추상화다에 대한 직접 링크" translate="no">​</a></h2>
+<ul>
+<li class="">
+<p>우리가 평소에 자주쓰는 반복문(for, while)도 추상화를 한 것이라고 합니다. 예를 들어서 컴퓨터에게 &quot;여러 번 같은 작업을 수행해!&quot;라고 지시하는 대신, for/while 반복문을 사용하여 이를 간결하게 표현을 하는 것이라고 합니다.</p>
+</li>
+<li class="">
+<p>이렇게 반복을 하게 되면 복잡한 반복 로직을 숨기고, 개발자가 보다 직관적이고 이해하기 쉬운 방식으로 반복 작업을 구현할 수 있게 해 줍니다.</p>
+</li>
+</ul>
+<p>적당한 설명이 되었을까요? 하지만 더욱더 잘 이해해 보도록 노력해 보겠습니다.</p>
+<p>추상화에 쓰이는 코드는 대표적으로 abstract와 interface가 있습니다.</p>
+<ul>
+<li class="">
+<p>두 코드의 공통점으로는 둘 다 객체를 만들 수 없는 클래스입니다.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-abstract">1. abstract<a href="#1-abstract" class="hash-link" aria-label="1. abstract에 대한 직접 링크" title="1. abstract에 대한 직접 링크" translate="no">​</a></h2>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="abstract는-설계도로-비유한다"><strong>abstract는 설계도로 비유한다</strong><a href="#abstract는-설계도로-비유한다" class="hash-link" aria-label="abstract는-설계도로-비유한다에 대한 직접 링크" title="abstract는-설계도로-비유한다에 대한 직접 링크" translate="no">​</a></h4>
+<ul>
+<li class="">abstract를 알기 전에 미리 알아야 하는 것들</li>
+</ul>
+<ol>
+<li class="">
+<p>abstract는 상속 키워드로 extends를 사용합니다.</p>
+</li>
+<li class="">
+<p>추상 메서드는 하위클래스에서 override를 강제해야 합니다.</p>
+</li>
+<li class="">
+<p>추상 메서드를 포함하는 클래스는 반드시 추상 클래스여야 합니다.</p>
+</li>
+<li class="">
+<p>다중 상속이 불가능합니다.</p>
+</li>
+</ol>
+<ul>
+<li class="">
+<p>3개의 제조사에서 핸드폰을 만듭니다.(Samsung, Apple, Nothing)</p>
+</li>
+<li class="">
+<p>전화기에는 전화하는 기능이 필요합니다.</p>
+</li>
+</ul>
+<div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">class SamsungPhone {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void call() {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println(&quot;삼성폰으로 전화를 겁니다.&quot;);  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">class ApplePhone {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void call() {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println(&quot;아이폰으로 전화를 겁니다.&quot;);  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">class NothingPhone {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void call(){  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println(&quot;낫싱폰으로 전화를 겁니다.&quot;);  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class Main {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public static void main(String [] args) {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        SamsungPhone samsung = new SamsungPhone();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        ApplePhone apple = new ApplePhone();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        NothingPhone nothing = new NothingPhone();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        samsung.call();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        apple.call();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        nothing.call();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<ul>
+<li class="">
+<p>예를 들어 이렇게 삼성폰, 애플폰, 낫싱폰으로 전화 기능이 있는 폰을 클래스로 구현했습니다.</p>
+</li>
+<li class="">
+<p>코드를 보시면 전화를 하는 call 메서드가 중복됩니다.</p>
+</li>
+<li class="">
+<p>그렇다면 아예 Phone이라는 상위 클래스를 만들어서 각 제조사별로 상속을 시킬 수 있지 않을까요?</p>
+</li>
+<li class="">
+<p>Phone이라는 상위 클래스에서 상속을 시켜서 제조사별로 클래스를 만들면 call이라는 기능을 확장시키면서 개발이 가능합니다.</p>
+</li>
+</ul>
+<div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">import java.util.ArrayList;  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">import java.util.Arrays;  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">import java.util.List;  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">abstract class Phone {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public abstract void call();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">class SamsungPhone extends Phone {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Override  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void call() {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println(&quot;삼성폰으로 전화를 겁니다.&quot;);  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">class ApplePhone extends Phone{  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Override  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void call() {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println(&quot;아이폰으로 전화를 겁니다.&quot;);  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">class NothingPhone extends Phone{  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Override  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void call(){  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println(&quot;낫싱폰으로 전화를 겁니다.&quot;);  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class Main {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public static void main(String [] args) {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        List &lt;Phone&gt; cellPhones = new ArrayList &lt;&gt;(Arrays.asList(new    SamsungPhone(), new ApplePhone(), new NothingPhone()));  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        for(Phone phone:cellPhones){  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">             phone.call();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p>이렇게 구현을 했습니다.</p>
+<p>위에서 쓴 코드에서</p>
+<div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">abstract</span><br></span></code></pre></div></div>
+<ul>
+<li class="">
+<p>abstract로 추상화한 코드를 작성하고 자식 클래스에서 상속받아서 구현하는 것입니다. 직접 객체를 생성하진 못하지만 공통된 기능을 가진 클래스의 구조를 정의하면서도 그 구체적인 실행은 각각의 하위 클래스에 위임할 수 있습니다.</p>
+</li>
+<li class="">
+<p>3개의 기종이 다른 핸드폰이 모두 통화하기 기능이 있고 상위 클래스 Phone에 있는 메서드 call기능을 오버라이딩(덮어쓰기) 해서 각자의 제조사 이름을 붙여 전화를 건다라고 출력을 합니다.</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="2interface"><strong>2.interface</strong><a href="#2interface" class="hash-link" aria-label="2interface에 대한 직접 링크" title="2interface에 대한 직접 링크" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="interface는-규칙-설명서"><strong>interface는 규칙 설명서</strong><a href="#interface는-규칙-설명서" class="hash-link" aria-label="interface는-규칙-설명서에 대한 직접 링크" title="interface는-규칙-설명서에 대한 직접 링크" translate="no">​</a></h3>
+<ul>
+<li class="">interface를 알기 전에 미리 알아야 하는 것들</li>
+</ul>
+<ol>
+<li class="">
+<p>interface는 구현부가 존재하지 않고 선언부만 존재합니다.</p>
+</li>
+<li class="">
+<p>interface의 모든 멤버 변수는 public static final(상수)이어야 하고, 생략이 가능합니다.</p>
+</li>
+<li class="">
+<p>interface의 모든 멤버 메서드는 public abstract이어야 하고, 생략이 가능합니다.</p>
+</li>
+<li class="">
+<p>interface는 상속 키워드로 implements를 사용합니다.</p>
+</li>
+<li class="">
+<p>다중 상속이 가능합니다.</p>
+</li>
+</ol>
+<ul>
+<li class="">
+<p>한국에서 사용되는 모든 핸드폰은 전화 걸기, 메시지 보내기 기능이 있어야 합니다.</p>
+</li>
+<li class="">
+<p>3개의 다른 제조사 핸드폰은 각기 다른 방식으로 핸드폰을 제작하지만 위에 3가지 기능은 모든 핸드폰이 가져야 하는 가이드입니다. (한국에 저 두 가지 기능 중 한 개라도 빠져있으면 출시불가라고 가정할 때)</p>
+</li>
+</ul>
+<ol>
+<li class="">
+<p>Samsung: 안드로이드 기반 폰을 만들지만 전화와 메시지 기능은 있습니다.</p>
+</li>
+<li class="">
+<p>Apple: ios 기반 폰을 만들지만 전화와 메시지 기능은 있습니다.</p>
+</li>
+<li class="">
+<p>Nothing: 안드로이드 기반으로 특이한 디자인의 폰을 만들지만 전화와 메시지 기능은 있습니다.</p>
+</li>
+</ol>
+<ul>
+<li class="">
+<p>각자 다른 개성을 가진 제조사가 핸드폰을 만들 때 전화하기 메시지 보내기 기능은 꼭 넣어서 제작을 해야 합니다.</p>
+</li>
+<li class="">
+<p>interface에 정의된 메서드를 각 클래스의 목적에 맞게 동일한 기능으로 구현해야 합니다.</p>
+</li>
+</ul>
+<div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">import java.util.ArrayList;  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">import java.util.Arrays;  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">import java.util.Collections;  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">import java.util.List;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">interface Phone {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    void call();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    void text();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">interface Test {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    void testTest();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">class SamsungPhone implements Phone, Test {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void call(){  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println(&quot;삼성폰으로 전화를 겁니다.&quot;);  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void text(){  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println(&quot;삼성폰으로 문자를 보냅니다.&quot;);  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void testTest(){  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println(&quot;왜 삼성만!&quot;);  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">class ApplePhone implements Phone {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void call(){  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println(&quot;아이폰으로 전화를 겁니다.&quot;);  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void text(){  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println(&quot;아이폰으로 문자를 보냅니다.&quot;);  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">class NothingPhone implements Phone {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void call(){  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println(&quot;낫싱폰으로 전화를 겁니다.&quot;);  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void text(){  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        System.out.println(&quot;낫싱폰으로 문자를 보냅니다.&quot;);  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class Main {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public static void main(String [] args) {  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        SamsungPhone sp = new SamsungPhone();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        ApplePhone ap = new ApplePhone();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        NothingPhone np = new NothingPhone();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        sp.call();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        sp.testTest();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        ap.call();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        np.text();  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        }  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span></code></pre></div></div>
+<p>이렇게 구현을 했습니다.</p>
+<p>위에서 쓴 코드에서</p>
+<div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">interface</span><br></span></code></pre></div></div>
+<ul>
+<li class="">
+<p>interface로 추상화한 코드를 작성하고 자식 클래스에서 상속받아서 구현했습니다.. 직접 객체를 생성하진 못하지만 공통된 규칙을 가진 클래스의 구조를 정의하면서도 그 구체적인 실행은 각각의 다른 기능을 구현할 수 있습니다.</p>
+</li>
+<li class="">
+<p>Samsung 클래스만 다중상속을 받아서 두 개의 기능을 구현해야 했습니다.</p>
+</li>
+<li class="">
+<p>3개의 기종이 다른 핸드폰이 모두 통화하기와 문자 보내기 기능이 있고 상위 추상 클래스 Phone에 있는 메서드 call기능을 포함시켜서 각자의 제조사 이름을 붙여 전화를 건다라고 출력을 합니다.</p>
+</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="차이점"><strong>차이점</strong><a href="#차이점" class="hash-link" aria-label="차이점에 대한 직접 링크" title="차이점에 대한 직접 링크" translate="no">​</a></h2>
+<ul>
+<li class="">
+<p>상속과 구현:</p>
+</li>
+<li class="">
+<p>abstract를 사용한 코드에서는 자식 클래스가 부모 클래스를 확장하는 것입니다..</p>
+</li>
+<li class="">
+<p>interface를 사용한 코드에서는 samsung, apple, nothing 3개의 클래스가 Phone 인터페이스를 구현합니다.</p>
+</li>
+<li class="">
+<p>interface는 한 클래스가 여러 개의 인터페이스를 구현할 수 있습니다.</p>
+</li>
+<li class="">
+<p>요약 :</p>
+</li>
+<li class="">
+<p>abstract는 &quot;상위-하위&quot;관계를 형성하는 것이고 한 클래스는 하나의 추상 클래스만 상속받을 수 있습니다.</p>
+</li>
+<li class="">
+<p>interface는 계약 이행과 같아서 한 클래스는 여러 인터페이스를 구현할 수 있습니다.</p>
+</li>
+</ul></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><b>태그:</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a rel="tag" title="개발 실전 노트" class="tag_zVej tagRegular_sFm0" href="/docs/blog/tags/dev">Dev</a></li><li class="tag_QGVx"><a rel="tag" title="Java/Spring Boot 관련 글" class="tag_zVej tagRegular_sFm0" href="/docs/blog/tags/dev/java-springboot">Java/SpringBoot</a></li><li class="tag_QGVx"><a rel="tag" title="Java 관련 글" class="tag_zVej tagRegular_sFm0" href="/docs/blog/tags/dev/java">Java</a></li><li class="tag_QGVx"><a rel="tag" title="테스트/테스트코드" class="tag_zVej tagRegular_sFm0" href="/docs/blog/tags/dev/testing">Testing</a></li></ul></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="블로그 게시물 탐색"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/blog/dev/java/11-java-비트-연산자"><div class="pagination-nav__sublabel">이전 게시물</div><div class="pagination-nav__label">11.Java 비트 연산자</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/blog/dev/java/9-java-구구단-계산기"><div class="pagination-nav__sublabel">다음 게시물</div><div class="pagination-nav__label">9.Java 구구단 계산기</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#추상화란" class="table-of-contents__link toc-highlight"><strong>추상화란?</strong></a></li><li><a href="#" class="table-of-contents__link toc-highlight"><strong>🤔</strong></a></li><li><a href="#평소에-자주-쓰는-반복문도-추상화다" class="table-of-contents__link toc-highlight"><strong>평소에 자주 쓰는 반복문도 추상화다!?</strong></a></li><li><a href="#1-abstract" class="table-of-contents__link toc-highlight">1. abstract</a></li><li><a href="#2interface" class="table-of-contents__link toc-highlight"><strong>2.interface</strong></a><ul><li><a href="#interface는-규칙-설명서" class="table-of-contents__link toc-highlight"><strong>interface는 규칙 설명서</strong></a></li></ul></li><li><a href="#차이점" class="table-of-contents__link toc-highlight"><strong>차이점</strong></a></li></ul></div></div></div></div></div></div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkmy_portfolio=globalThis.webpackChunkmy_portfolio||[]).push([[13443],{58101:o=>{o.exports=JSON.parse('{"metadata":{"permalink":"/docs/blog","page":1,"postsPerPage":20,"totalPages":13,"totalCount":242,"nextPage":"/docs/blog/page/2","blogDescription":"\uae00\uacfc \uae30\ub85d\uc744 \ubaa8\uc544\ub454 \uacf5\uac04","blogTitle":"Blog"}}')}}]);

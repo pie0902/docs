@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkmy_portfolio=globalThis.webpackChunkmy_portfolio||[]).push([[86366],{86366:(e,o,r)=>{r.d(o,{createArchitectureServices:()=>c.S});var c=r(38980);r(87960)}}]);
