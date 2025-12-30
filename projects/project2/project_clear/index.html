@@ -5,8 +5,8 @@
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">프로젝트 총정리 | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://pie0902.github.io/docs/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://pie0902.github.io/docs/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://pie0902.github.io/docs/projects/project2/project_clear"><meta data-rh="true" property="og:locale" content="ko"><meta data-rh="true" name="docusaurus_locale" content="ko"><meta data-rh="true" name="docsearch:language" content="ko"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="프로젝트 총정리 | My Site"><meta data-rh="true" name="description" content="본 문서는 프로젝트 전체를 한눈에 이해하기 위한 요약 페이지입니다."><meta data-rh="true" property="og:description" content="본 문서는 프로젝트 전체를 한눈에 이해하기 위한 요약 페이지입니다."><link data-rh="true" rel="icon" href="/docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://pie0902.github.io/docs/projects/project2/project_clear"><link data-rh="true" rel="alternate" href="https://pie0902.github.io/docs/projects/project2/project_clear" hreflang="ko"><link data-rh="true" rel="alternate" href="https://pie0902.github.io/docs/projects/project2/project_clear" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"프로젝트 총정리","item":"https://pie0902.github.io/docs/projects/project2/project_clear"}]}</script><link rel="alternate" type="application/rss+xml" href="/docs/blog/rss.xml" title="My Site RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/docs/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/docs/assets/css/styles.45b1dd04.css">
-<script src="/docs/assets/js/runtime~main.f706ba66.js" defer="defer"></script>
-<script src="/docs/assets/js/main.0165b0e3.js" defer="defer"></script>
+<script src="/docs/assets/js/runtime~main.9c1f109d.js" defer="defer"></script>
+<script src="/docs/assets/js/main.6e6f4451.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -58,7 +58,8 @@
 <p><strong>결과</strong></p>
 <ul>
 <li class="">선택 필드의 데이터 정합성이 개선되어 조회/검색/표시에서 예외 케이스 감소</li>
-<li class="">승인/프로필 수정 등 후속 플로우도 안정적으로 동작</li>
+<li class="">가입/승인 단계에서 &quot;&quot;/공백 데이터가 누적되지 않도록 방지</li>
+<li class="">단, 내 정보 수정(<code>updateProfile</code>)에서는 &quot;&quot;를 그대로 저장할 수 있어 입력 정책/명세 통일이 필요</li>
 </ul>
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-3-n1조회-쿼리-폭증-징후를-빠르게-식별완화">2-3. N+1(조회 쿼리 폭증) 징후를 빠르게 식별/완화<a href="#2-3-n1조회-쿼리-폭증-징후를-빠르게-식별완화" class="hash-link" aria-label="2-3. N+1(조회 쿼리 폭증) 징후를 빠르게 식별/완화에 대한 직접 링크" title="2-3. N+1(조회 쿼리 폭증) 징후를 빠르게 식별/완화에 대한 직접 링크" translate="no">​</a></h3>
@@ -67,7 +68,7 @@
 <p><strong>해결</strong></p>
 <ul>
 <li class="">요청 단위 쿼리 수/시간을 헤더로 노출하는 <strong>QueryMetricsFilter</strong>를 적용하여 관측 가능하게 구성</li>
-<li class="">근태/휴가 리스트 조회는 Repository에 <code>@EntityGraph</code>를 적용해 연관 엔티티를 함께 로딩하여 N+1을 완화</li>
+<li class="">근태/휴가 리스트 조회는 Repository에 <code>@EntityGraph</code> 및 fetch join 기반 조회를 적용해 연관 엔티티를 함께 로딩하여 N+1을 완화</li>
 </ul>
 <p><strong>결과</strong></p>
 <ul>

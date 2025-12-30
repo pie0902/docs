@@ -5,8 +5,8 @@
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">설계/기술적 의사결정 | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://pie0902.github.io/docs/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://pie0902.github.io/docs/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://pie0902.github.io/docs/projects/project2/decisions"><meta data-rh="true" property="og:locale" content="ko"><meta data-rh="true" name="docusaurus_locale" content="ko"><meta data-rh="true" name="docsearch:language" content="ko"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="설계/기술적 의사결정 | My Site"><meta data-rh="true" name="description" content="설계 결정(기획/아키텍처)"><meta data-rh="true" property="og:description" content="설계 결정(기획/아키텍처)"><link data-rh="true" rel="icon" href="/docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://pie0902.github.io/docs/projects/project2/decisions"><link data-rh="true" rel="alternate" href="https://pie0902.github.io/docs/projects/project2/decisions" hreflang="ko"><link data-rh="true" rel="alternate" href="https://pie0902.github.io/docs/projects/project2/decisions" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"설계/기술적 의사결정","item":"https://pie0902.github.io/docs/projects/project2/decisions"}]}</script><link rel="alternate" type="application/rss+xml" href="/docs/blog/rss.xml" title="My Site RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/docs/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/docs/assets/css/styles.45b1dd04.css">
-<script src="/docs/assets/js/runtime~main.f706ba66.js" defer="defer"></script>
-<script src="/docs/assets/js/main.0165b0e3.js" defer="defer"></script>
+<script src="/docs/assets/js/runtime~main.9c1f109d.js" defer="defer"></script>
+<script src="/docs/assets/js/main.6e6f4451.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -63,6 +63,14 @@
 <li class="">기대 효과: 기존 값이 불필요하게 덮어쓰이지 않아 부분 수정 동작이 예측 가능해졌습니다.</li>
 <li class="">참고: 빈 문자열(&quot;&quot;)은 <code>null</code>이 아니므로, 클라이언트가 &quot;&quot;를 보내면 값이 &quot;&quot;로 갱신될 수 있습니다(정책/명세로 통일 필요).</li>
 </ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="7-company-기준-논리적-멀티테넌시회사-스코프-설계">7. Company 기준 논리적 멀티테넌시(회사 스코프) 설계<a href="#7-company-기준-논리적-멀티테넌시회사-스코프-설계" class="hash-link" aria-label="7. Company 기준 논리적 멀티테넌시(회사 스코프) 설계에 대한 직접 링크" title="7. Company 기준 논리적 멀티테넌시(회사 스코프) 설계에 대한 직접 링크" translate="no">​</a></h3>
+<ul>
+<li class="">배경: 여러 회사가 하나의 시스템을 공유하되 데이터는 회사 단위로 분리돼야 했습니다. 초기부터 물리적 DB 분리(테넌트별 DB/스키마)는 과도하다고 판단했지만, 단일 테넌트 전제로 설계하면 이후 확장이 어렵다고 보았습니다.</li>
+<li class="">결정: Company 1 : N User 관계를 고정하고, 핵심 도메인(Attendance, LeaveRequest, CompanyRule 등)에 company_id를 테넌트 키로 두는 논리적 멀티테넌시를 적용했습니다. (AnnualLeaveBalance는 user_id + year로 관리하고 회사 스코프는 user → company로 귀속)</li>
+<li class="">조회/인가 원칙: API는 “로그인 사용자 + 소속 회사”를 항상 함께 검증하는 것을 원칙으로 하고, 회사 스코프 기반 조회(findByCompanyId...)를 기본 패턴으로 설계했습니다.</li>
+<li class="">기대 효과: 회사 간 데이터 접근을 구조적으로 차단할 수 있는 기반을 마련했고, 추후 DB 분리/샤딩 등 물리적 멀티테넌시로 확장 가능한 여지를 확보했습니다.</li>
+<li class="">한계/보완: 일부 기능은 companyId/userId 파라미터 기반이라 회사 스코프 검증이 누락될 수 있어, 서비스 레이어에서 회사 스코프 검증을 공통화해 일관성을 강화할 계획입니다.</li>
+</ul>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="기술적-의사결정">기술적 의사결정<a href="#기술적-의사결정" class="hash-link" aria-label="기술적 의사결정에 대한 직접 링크" title="기술적 의사결정에 대한 직접 링크" translate="no">​</a></h2>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-인증인가를-jwt--stateless로-결정">1. 인증/인가를 JWT + Stateless로 결정<a href="#1-인증인가를-jwt--stateless로-결정" class="hash-link" aria-label="1. 인증/인가를 JWT + Stateless로 결정에 대한 직접 링크" title="1. 인증/인가를 JWT + Stateless로 결정에 대한 직접 링크" translate="no">​</a></h3>
@@ -70,7 +78,6 @@
 <li class="">도입 이유<!-- -->
 <ol>
 <li class="">REST API 기반이라 세션 상태를 서버에 두지 않고 인증을 처리하려고 했습니다.</li>
-<li class="">배포/스케일 시 서버 간 세션 동기화 부담을 피하려고 했습니다.</li>
 </ol>
 </li>
 <li class="">기대 효과<!-- -->
@@ -85,13 +92,13 @@
 <li class="">도입 이유<!-- -->
 <ol>
 <li class="">N+1 같은 성능 이슈를 “숫자”로 빠르게 발견/비교하려고 했습니다.</li>
-<li class="">엔드포인트별 성능을 개발/리뷰 단계에서 객관적으로 확인하려고 했습니다.</li>
+<li class="">엔드포인트별 성능을 개발 과정에서 객관적으로 확인하려고 했습니다.</li>
 </ol>
 </li>
 <li class="">기대 효과<!-- -->
 <ol>
 <li class="">응답 헤더로 쿼리 수/시간이 노출되어 병목을 빠르게 추적할 수 있었습니다.</li>
-<li class="">개선 전후(기준치 대비) 성능 변화를 쉽게 공유하고 검증할 수 있었습니다.</li>
+<li class="">개선 전후(기준치 대비) 성능 변화를 쉽게 비교하고 회귀 여부를 검증할 수 있었습니다.</li>
 </ol>
 </li>
 </ul>
@@ -105,7 +112,7 @@
 </li>
 <li class="">기대 효과<!-- -->
 <ol>
-<li class="">프론트엔드에서 에러 처리가 단순해져 사용자 경험이 안정적이었습니다.</li>
+<li class="">표준 객체 정의로 Postman 테스트 및 디버깅 과정에서의 에러 식별이 단순화되었습니다.</li>
 <li class="">로그/응답 포맷이 고정되어 디버깅과 장애 대응이 빨라졌습니다.</li>
 </ol>
 </li>
@@ -114,16 +121,16 @@
 <ul>
 <li class="">도입 이유<!-- -->
 <ol>
-<li class="">API 명세와 테스트를 한 곳에서 관리하여 협업/검증을 빠르게 하려고 했습니다.</li>
+<li class="">API 명세와 테스트를 한 곳에서 관리하여 개발/검증 루프를 빠르게 하려고 했습니다.</li>
 <li class="">JWT가 필요한 API도 Swagger에서 바로 호출 가능하도록 하려고 했습니다.</li>
 </ol>
 </li>
 <li class="">기대 효과<!-- -->
 <ol>
-<li class="">프론트/QA에서 문서를 보고 즉시 호출·검증할 수 있어 커뮤니케이션이 원활했습니다.</li>
-<li class="">변경된 API가 문서에 자동 반영되어 문서 유지보수 비용이 줄었습니다.</li>
+<li class="">Swagger UI에서 문서 확인과 호출·검증을 한 번에 할 수 있어 개발 속도가 빨라졌습니다.</li>
+<li class="">변경된 API가 문서에 자동 반영되어 명세-구현 불일치가 줄었습니다.</li>
 </ol>
 </li>
-</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="문서 페이지"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/projects/project2/architecture"><div class="pagination-nav__sublabel">이전</div><div class="pagination-nav__label">아키텍처 &amp; CICD</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/projects/project2/troubleshooting"><div class="pagination-nav__sublabel">다음</div><div class="pagination-nav__label">트러블 슈팅</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#설계-결정기획아키텍처" class="table-of-contents__link toc-highlight">설계 결정(기획/아키텍처)</a><ul><li><a href="#1-회사-테이블-생성-방식대표-가입-시-자동-생성" class="table-of-contents__link toc-highlight">1. 회사 테이블 생성 방식(대표 가입 시 자동 생성)</a></li><li><a href="#2-회원가입-플로우-정리회사-선택--승인" class="table-of-contents__link toc-highlight">2. 회원가입 플로우 정리(회사 선택 + 승인)</a></li><li><a href="#3-근무시간-정책-다양성-대응company-rule-테이블-도입" class="table-of-contents__link toc-highlight">3. 근무시간 정책 다양성 대응(Company Rule 테이블 도입)</a></li><li><a href="#4-야근주말-등-추가근무-범위스코프-결정" class="table-of-contents__link toc-highlight">4. 야근/주말 등 추가근무 범위(스코프 결정)</a></li><li><a href="#5-ceo사원-dto-분리" class="table-of-contents__link toc-highlight">5. CEO/사원 DTO 분리</a></li><li><a href="#6-유저-정보-업데이트-시-null부분-수정-처리" class="table-of-contents__link toc-highlight">6. 유저 정보 업데이트 시 null(부분 수정) 처리</a></li></ul></li><li><a href="#기술적-의사결정" class="table-of-contents__link toc-highlight">기술적 의사결정</a><ul><li><a href="#1-인증인가를-jwt--stateless로-결정" class="table-of-contents__link toc-highlight">1. 인증/인가를 JWT + Stateless로 결정</a></li><li><a href="#2-요청-단위-쿼리-카운팅관측성능-지표-헤더-제공" class="table-of-contents__link toc-highlight">2. 요청 단위 쿼리 카운팅/관측(성능 지표 헤더 제공)</a></li><li><a href="#3-에러-응답-표준화전역-예외-처리" class="table-of-contents__link toc-highlight">3. 에러 응답 표준화(전역 예외 처리)</a></li><li><a href="#4-swaggeropenapi--bearerauth-문서화" class="table-of-contents__link toc-highlight">4. Swagger(OpenAPI) + BearerAuth 문서화</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="문서 페이지"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/projects/project2/architecture"><div class="pagination-nav__sublabel">이전</div><div class="pagination-nav__label">아키텍처 &amp; CICD</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/projects/project2/troubleshooting"><div class="pagination-nav__sublabel">다음</div><div class="pagination-nav__label">트러블 슈팅</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#설계-결정기획아키텍처" class="table-of-contents__link toc-highlight">설계 결정(기획/아키텍처)</a><ul><li><a href="#1-회사-테이블-생성-방식대표-가입-시-자동-생성" class="table-of-contents__link toc-highlight">1. 회사 테이블 생성 방식(대표 가입 시 자동 생성)</a></li><li><a href="#2-회원가입-플로우-정리회사-선택--승인" class="table-of-contents__link toc-highlight">2. 회원가입 플로우 정리(회사 선택 + 승인)</a></li><li><a href="#3-근무시간-정책-다양성-대응company-rule-테이블-도입" class="table-of-contents__link toc-highlight">3. 근무시간 정책 다양성 대응(Company Rule 테이블 도입)</a></li><li><a href="#4-야근주말-등-추가근무-범위스코프-결정" class="table-of-contents__link toc-highlight">4. 야근/주말 등 추가근무 범위(스코프 결정)</a></li><li><a href="#5-ceo사원-dto-분리" class="table-of-contents__link toc-highlight">5. CEO/사원 DTO 분리</a></li><li><a href="#6-유저-정보-업데이트-시-null부분-수정-처리" class="table-of-contents__link toc-highlight">6. 유저 정보 업데이트 시 null(부분 수정) 처리</a></li><li><a href="#7-company-기준-논리적-멀티테넌시회사-스코프-설계" class="table-of-contents__link toc-highlight">7. Company 기준 논리적 멀티테넌시(회사 스코프) 설계</a></li></ul></li><li><a href="#기술적-의사결정" class="table-of-contents__link toc-highlight">기술적 의사결정</a><ul><li><a href="#1-인증인가를-jwt--stateless로-결정" class="table-of-contents__link toc-highlight">1. 인증/인가를 JWT + Stateless로 결정</a></li><li><a href="#2-요청-단위-쿼리-카운팅관측성능-지표-헤더-제공" class="table-of-contents__link toc-highlight">2. 요청 단위 쿼리 카운팅/관측(성능 지표 헤더 제공)</a></li><li><a href="#3-에러-응답-표준화전역-예외-처리" class="table-of-contents__link toc-highlight">3. 에러 응답 표준화(전역 예외 처리)</a></li><li><a href="#4-swaggeropenapi--bearerauth-문서화" class="table-of-contents__link toc-highlight">4. Swagger(OpenAPI) + BearerAuth 문서화</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
 </body>
 </html>

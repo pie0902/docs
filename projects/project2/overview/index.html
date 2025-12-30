@@ -5,8 +5,8 @@
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">프로젝트 소개 | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://pie0902.github.io/docs/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://pie0902.github.io/docs/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://pie0902.github.io/docs/projects/project2/overview"><meta data-rh="true" property="og:locale" content="ko"><meta data-rh="true" name="docusaurus_locale" content="ko"><meta data-rh="true" name="docsearch:language" content="ko"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="프로젝트 소개 | My Site"><meta data-rh="true" name="description" content="REGO"><meta data-rh="true" property="og:description" content="REGO"><link data-rh="true" rel="icon" href="/docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://pie0902.github.io/docs/projects/project2/overview"><link data-rh="true" rel="alternate" href="https://pie0902.github.io/docs/projects/project2/overview" hreflang="ko"><link data-rh="true" rel="alternate" href="https://pie0902.github.io/docs/projects/project2/overview" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"프로젝트 소개","item":"https://pie0902.github.io/docs/projects/project2/overview"}]}</script><link rel="alternate" type="application/rss+xml" href="/docs/blog/rss.xml" title="My Site RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/docs/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/docs/assets/css/styles.45b1dd04.css">
-<script src="/docs/assets/js/runtime~main.f706ba66.js" defer="defer"></script>
-<script src="/docs/assets/js/main.0165b0e3.js" defer="defer"></script>
+<script src="/docs/assets/js/runtime~main.9c1f109d.js" defer="defer"></script>
+<script src="/docs/assets/js/main.6e6f4451.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -39,7 +39,7 @@
 <ul>
 <li class="">출퇴근 관리: 체크인/체크아웃, 고정/유연 근무 규칙 반영, 지각/조퇴/부족 근무(SHORT_WORK) 판정</li>
 <li class="">휴가 관리: 신청/승인/거절, 반차(0.5) 지원, 주말 제외 일수 계산, 잔여 연차 검증/차감</li>
-<li class="">연차 잔액: 부여/사용/복원, 입사 1년 미만 월 1일 부여 스케줄러(Feature Flag로 선택 활성화)</li>
+<li class="">연차 잔액: 부여/사용/복원, 입사 1년 미만 월 1일 부여(Feature Flag: <code>feature.firstYearMonthlyGrant.enabled</code>, 매일 00:10 보정 실행)</li>
 <li class="">사용자/회사: 회원가입(대표/사원), 승인/권한, 프로필 이미지 업로드/정적 제공</li>
 <li class="">대시보드: 내 프로필/근태/연차/휴가 통합 조회</li>
 <li class="">API 문서: Swagger UI 제공</li>
@@ -62,25 +62,25 @@
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="devops--infra">DevOps / Infra<a href="#devops--infra" class="hash-link" aria-label="DevOps / Infra에 대한 직접 링크" title="DevOps / Infra에 대한 직접 링크" translate="no">​</a></h3>
 <ul>
 <li class="">로컬: Docker Compose(MySQL)</li>
-<li class="">정적 이미지 서빙: /profile-images/** → 파일시스템 base-path 매핑<!-- -->
+<li class="">정적 이미지 서빙: <code>/profile-images/**</code> → 파일시스템 base-path 매핑<!-- -->
 <ul>
-<li class="">base-path(로컬 기본): $HOME/IdeaProjects/ess/uploads/profile-images</li>
-<li class="">기본 이미지: base-path/default/default-profile.png</li>
+<li class="">base-path(로컬 기본): <code>$HOME/IdeaProjects/ess/uploads/profile-images</code></li>
+<li class="">기본 이미지(설정값): <code>base-path/default/default-profile.png</code> (배포 시 파일 준비 또는 설정 변경 필요)</li>
 </ul>
 </li>
 <li class="">배포(현재): Docker 이미지 빌드/푸시 → EC2에서 docker compose pull/up -d</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="aws현재계획">AWS(현재/계획)<a href="#aws현재계획" class="hash-link" aria-label="AWS(현재/계획)에 대한 직접 링크" title="AWS(현재/계획)에 대한 직접 링크" translate="no">​</a></h3>
 <ul>
-<li class="">배포 대상: EC2 (권장 base-path: /var/ess/profile-images)</li>
-<li class="">시크릿(현재): .env/환경변수로 관리(JWT/DB 크리덴셜)</li>
+<li class="">배포 대상: EC2 (배포 base-path: <code>/data/profile-images</code>)</li>
+<li class="">시크릿(현재): .env/환경변수로 관리</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="실행개발-가이드로컬">실행/개발 가이드(로컬)<a href="#실행개발-가이드로컬" class="hash-link" aria-label="실행/개발 가이드(로컬)에 대한 직접 링크" title="실행/개발 가이드(로컬)에 대한 직접 링크" translate="no">​</a></h3>
 <ul>
 <li class="">DB: docker compose -f compose.yaml up -d (MySQL 8, DB: ess)</li>
 <li class="">설정: application-sample.properties → application.properties<!-- -->
 <ul>
-<li class="">환경변수: DB_USERNAME, DB_PASSWORD, JWT_SECRET(32바이트+), PROFILE_IMAGE_BASE_PATH</li>
+<li class="">환경변수(예시): SPRING_DATASOURCE_URL, SPRING_DATASOURCE_USERNAME, SPRING_DATASOURCE_PASSWORD, JWT_SECRET(32바이트+), PROFILE_IMAGE_BASE_PATH</li>
 </ul>
 </li>
 <li class="">실행: ./gradlew bootRun</li>
@@ -115,7 +115,7 @@
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="aws">AWS<a href="#aws" class="hash-link" aria-label="AWS에 대한 직접 링크" title="AWS에 대한 직접 링크" translate="no">​</a></h3>
 <p><img decoding="async" loading="lazy" src="https://img.shields.io/badge/AWS-EC2-FF9900?logo=amazonaws&amp;logoColor=white" alt="EC2" class="img_ev3q"> : 애플리케이션 서버 호스팅에 사용되었습니다.</p>
-<p><img decoding="async" loading="lazy" src="https://img.shields.io/badge/AWS-RDS%20(MySQL)-527FFF?logo=amazonrds&amp;logoColor=white" alt="RDS" class="img_ev3q"> : 운영 DB로 사용되었습니다.</p>
+<p><img decoding="async" loading="lazy" src="https://img.shields.io/badge/AWS-RDS%20(MySQL)-527FFF?logo=amazonrds&amp;logoColor=white" alt="RDS" class="img_ev3q"> : (선택) 운영 DB(MySQL)는 환경변수로 외부 주입되며, RDS 같은 관리형 DB를 사용할 수 있습니다.</p>
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="logging--monitoring">Logging / Monitoring<a href="#logging--monitoring" class="hash-link" aria-label="Logging / Monitoring에 대한 직접 링크" title="Logging / Monitoring에 대한 직접 링크" translate="no">​</a></h3>
 <p><img decoding="async" loading="lazy" src="https://img.shields.io/badge/SLF4J-Logger-2A2A2A?logoColor=white" alt="SLF4J" class="img_ev3q"> : 애플리케이션 로깅에 사용되었습니다.</p>
