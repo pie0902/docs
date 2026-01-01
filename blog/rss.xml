@@ -4,10 +4,62 @@
         <title>My Site Blog</title>
         <link>https://pie0902.github.io/docs/blog</link>
         <description>My Site Blog</description>
-        <lastBuildDate>Mon, 29 Dec 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 01 Jan 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ko</language>
+        <item>
+            <title><![CDATA[Proxy]]></title>
+            <link>https://pie0902.github.io/docs/blog/cs/network/Proxy</link>
+            <guid>https://pie0902.github.io/docs/blog/cs/network/Proxy</guid>
+            <pubDate>Thu, 01 Jan 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[크롤링할 때 IP를 바꿔야 할 때도 사용하고, Spring Boot로 개발할 때도 영속성 관련해서 Proxy를 공부한다. Nginx에서 리버스 프록시다 뭐다 하며 요청을 정리해 줄 때도 쓰는 용어...]]></description>
+            <content:encoded><![CDATA[<p>크롤링할 때 IP를 바꿔야 할 때도 사용하고, Spring Boot로 개발할 때도 영속성 관련해서 Proxy를 공부한다. Nginx에서 리버스 프록시다 뭐다 하며 요청을 정리해 줄 때도 쓰는 용어...</p>
+<p>제대로 알고 쓰자.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="proxy란">Proxy란?<a href="https://pie0902.github.io/docs/blog/cs/network/Proxy#proxy%EB%9E%80" class="hash-link" aria-label="Proxy란?에 대한 직접 링크" title="Proxy란?에 대한 직접 링크" translate="no">​</a></h2>
+<p>Proxy를 구글 번역기에 입력하면 "대리" 라고 나온다.
+단 한 줄로 프록시를 정의할 수 있을까?</p>
+<ul>
+<li class="">대신 해주는 중간자라고 표현하면 어떨까 싶다.</li>
+</ul>
+<p>GPT의 두 줄 대답:</p>
+<blockquote>
+<p><strong>Proxy는 요청을 직접 대상에게 보내지 않고,<br>
+<!-- -->중간에서 대신 받아 처리하거나 전달하는 존재다.</strong></p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="실제-겪은-예시들">실제 겪은 예시들<a href="https://pie0902.github.io/docs/blog/cs/network/Proxy#%EC%8B%A4%EC%A0%9C-%EA%B2%AA%EC%9D%80-%EC%98%88%EC%8B%9C%EB%93%A4" class="hash-link" aria-label="실제 겪은 예시들에 대한 직접 링크" title="실제 겪은 예시들에 대한 직접 링크" translate="no">​</a></h2>
+<ol>
+<li class="">데이터를 크롤링할 때</li>
+</ol>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">내 PC -&gt; Proxy Server -&gt; 데이터 긁어오는 사이트</span><br></span></code></pre></div></div>
+<ul>
+<li class="">특정 IP에서 과도하게 접속하면 서버에 부하를 줄 수 있어 차단당할 수 있는데, 이때 프록시를 통해 접속 경로를 분산(오해의 소지)</li>
+</ul>
+<ol start="2">
+<li class="">Nginx에서 80번 포트에서 받은 요청을 8080번으로 전달할 때</li>
+</ol>
+<div class="language-Nginx language-nginx codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-nginx codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># Nginx 설정 예시</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">server {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    listen 80; # 외부에서 접속하는 문</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    location / {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        proxy_pass http://localhost:8080;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<ol start="3">
+<li class="">Spring Boot @Transactional (Dynamic Proxy)</li>
+</ol>
+<div class="language-Bash language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">// 내부 동작 원리 (AOP)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">1. 클라이언트가 join() 호출</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2. 실제 객체가 아닌 '가짜 프록시 객체'가 가로챔</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">3. 프록시: "DB 트랜잭션 시작" (Begin)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">4. 실제 객체의 join() 실행 (Target 로직)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">5. 프록시: "성공했으니 DB에 반영" (Commit)</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="정리">정리<a href="https://pie0902.github.io/docs/blog/cs/network/Proxy#%EC%A0%95%EB%A6%AC" class="hash-link" aria-label="정리에 대한 직접 링크" title="정리에 대한 직접 링크" translate="no">​</a></h2>
+<p>Proxy는 중간자이다. 복잡하게 생각 할 필요가 없다.
+심부름 센터 직원이라고 비유하면 좋을 것 같다.</p>
+<ul>
+<li class="">크롤링: 저 대신 물건 좀 가져다주세요.</li>
+<li class="">Nginx: 물건을 분류해서 알맞은 창고로 가져다 주세요.</li>
+<li class="">Spring Boot:<!-- -->
+<ul>
+<li class="">오늘 B업체에 돈 가져다주세요.</li>
+<li class="">B업체 문 닫혀 있다면 가져간 돈 다시 가지고 돌아오세요.</li>
+<li class="">B업체에 돈 가져다주셨으면 장부에 기록해 주세요.</li>
+</ul>
+</li>
+</ul>]]></content:encoded>
+            <category>CS</category>
+            <category>Network</category>
+        </item>
         <item>
             <title><![CDATA[쿼리 모니터링 자동화]]></title>
             <link>https://pie0902.github.io/docs/blog/dev/spring/쿼리_모니터링_자동화</link>
@@ -1806,32 +1858,6 @@ ps aux 출력으로 확인했다.
             <category>Embedded</category>
             <category>Data Structure</category>
             <category>Testing</category>
-        </item>
-        <item>
-            <title><![CDATA[IoC(Inversion of Control)와 DI(Dependency Injection)]]></title>
-            <link>https://pie0902.github.io/docs/blog/misc/ioc-inversion-of-control-와-di-dependency-injection</link>
-            <guid>https://pie0902.github.io/docs/blog/misc/ioc-inversion-of-control-와-di-dependency-injection</guid>
-            <pubDate>Wed, 16 Oct 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[IOC(Inversion of Control)]]></description>
-            <content:encoded><![CDATA[<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="iocinversion-of-control">IOC(Inversion of Control)<a href="https://pie0902.github.io/docs/blog/misc/ioc-inversion-of-control-%EC%99%80-di-dependency-injection#iocinversion-of-control" class="hash-link" aria-label="IOC(Inversion of Control)에 대한 직접 링크" title="IOC(Inversion of Control)에 대한 직접 링크" translate="no">​</a></h3>
-<ul>
-<li class="">IoC(제어의 역전)는 프로그램의 제어 흐름을 사용자 코드가 아닌 프레임워크가 관리하는 개념이다. 이를 통해 결합도는 낮아지고, 유연성 및 확장성이 향상된다.</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="didependency-injection">DI(Dependency Injection)<a href="https://pie0902.github.io/docs/blog/misc/ioc-inversion-of-control-%EC%99%80-di-dependency-injection#didependency-injection" class="hash-link" aria-label="DI(Dependency Injection)에 대한 직접 링크" title="DI(Dependency Injection)에 대한 직접 링크" translate="no">​</a></h3>
-<ul>
-<li class="">DI(의존성 주입)는 객체 간의 의존 관계를 외부에서 설정하여, 각 객체가 필요로 하는 의존성을 자동으로 제공하는 기법이다. 이 과정은 코드의 재사용성을 높이고, 유지보수를 용이하게 한다.</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ioc와-di의-관계">IoC와 DI의 관계<a href="https://pie0902.github.io/docs/blog/misc/ioc-inversion-of-control-%EC%99%80-di-dependency-injection#ioc%EC%99%80-di%EC%9D%98-%EA%B4%80%EA%B3%84" class="hash-link" aria-label="IoC와 DI의 관계에 대한 직접 링크" title="IoC와 DI의 관계에 대한 직접 링크" translate="no">​</a></h3>
-<ul>
-<li class="">IoC는 프로그램의 제어 흐름을 외부에 맡기는 원리이며, DI는 이 원리를 구현하는 한 방법으로, 객체 간 의존성을 외부에서 주입한다. 두 개념은 서로 밀접하게 연관되어 있어, DI를 통해 IoC의 이점을 실현한다.</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="예시">예시)<a href="https://pie0902.github.io/docs/blog/misc/ioc-inversion-of-control-%EC%99%80-di-dependency-injection#%EC%98%88%EC%8B%9C" class="hash-link" aria-label="예시)에 대한 직접 링크" title="예시)에 대한 직접 링크" translate="no">​</a></h2>
-<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">// 서비스 인터페이스</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public interface MessageService {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    String getMessage();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// 서비스 인터페이스 구현체</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">@Component</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class EmailService implements MessageService {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Override</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public String getMessage() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return "Hello, this is an email message!";</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">@Controller</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class MessageController {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    private final MessageService messageService;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Autowired</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public MessageController(MessageService messageService) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        this.messageService = messageService;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @GetMapping("/message")</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public String showMessage(Model model) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        // 모델에 메시지 추가</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        model.addAttribute("message", messageService.getMessage());</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        // 뷰 이름 반환</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return "messageView"; // messageView.html과 같은 뷰 파일을 찾아서 사용자에게 보여줌</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
-<ul>
-<li class="">이 과정에서 의존성 주입(DI)이 사용되어 MessageService의 구현체가 MessageController에 자동으로 주입된다.</li>
-</ul>
-<p><strong>P.S 그냥 Spring아 너가 대신 해줘! 인 것 같다.</strong></p>]]></content:encoded>
-            <category>Misc</category>
         </item>
     </channel>
 </rss>
