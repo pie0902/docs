@@ -5,7 +5,7 @@ title: ERD
 # ERD (Entity Relationship Diagram)
 
 
-<img src="/docs/img/project2/hr-erd.png" alt="ERD" />
+<img src="/img/project2/hr-erd.png" alt="ERD" />
 
 - Company(companies)를 기준으로 User(users)가 소속되는 구조로, 회사 1 : 사용자 N 관계입니다.
 - CompanyRule(company_rule)은 회사별 근무제/출퇴근 기준/허용치를 담는 테이블로 회사와 1:1로 연결됩니다.
