@@ -21,7 +21,7 @@ title: CI/CD
 ---
 
 # CI/CD (ECS)
-<img src="/docs/img/project1/cicd_ecs.png" alt="CICD_ECS" />
+<img src="/img/project1/cicd_ecs.png" alt="CICD_ECS" />
 
 # CI/CD (EC2)
-<img src="/docs/img/project1/cicd_ec2.png" alt="CICD_EC2" />
+<img src="/img/project1/cicd_ec2.png" alt="CICD_EC2" />
