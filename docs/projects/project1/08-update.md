@@ -4,18 +4,7 @@ title: --2025 배포 업데이트--
 
 # 배포 업데이트
 온프레미스(Self-Hosted Linux Server) 환경으로 인프라를 마이그레이션했습니다.
-[바로가기](https://msa.thunderdev.site/)
-
-### 데모 계정 안내
-테스트 및 기능 확인을 위한 계정입니다.
-
-- 판매자 계정  
-  - ID: seller@sell.com  
-  - PW: testtest
-
-- 일반 사용자 계정  
-  - ID: test@test.com  
-  - PW: testtest
+현재는 서버 운영을 종료했습니다.
 
 ## Infrastructure: 
 - 서버/OS: Ubuntu 22.04.5 LTS (온프레미스/자체 구축 서버)
